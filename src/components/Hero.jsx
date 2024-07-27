@@ -6,6 +6,10 @@ const scrollToContact = () => {
   window.location.hash = '#Contact';
 };
 
+const linkToResume = () => {
+  window.location.href = 'https://www.linkedin.com/in/rohis10iq';
+};
+
 function Hero() {
   return (
     <div>
@@ -24,7 +28,7 @@ function Hero() {
               <button onClick={scrollToContact} className="inline-flex text-white bg-yellow-500  py-2 px-6 focus:outline-none hover:text-yellow-200 hover:bg-gray-700 border-2 border-transparent rounded-full hover:border-yellow-200 text-lg">
                Contact Info 
               </button>
-              <button className="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white text-lg rounded-full">
+              <button onClick = {linkToResume} className="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white text-lg rounded-full">
                 Resume
               </button>
             </div>
