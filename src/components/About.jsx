@@ -3,13 +3,26 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGraduationCap, faTrophy } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+import { useInView } from 'react-intersection-observer';
 
 function About() {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1, // Adjust as needed
+  });
+
   return (
     <div>
       <section id="About" className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-col text-center w-full mb-20">
+          <motion.div
+            className="flex flex-col text-center w-full mb-20"
+            ref={ref}
+            initial={{ opacity: 0, y: -50 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <h1 className="sm:text-5xl text-2xl font-medium title-font mb-4 text-white tracking-wide">
               About Me
             </h1>
@@ -22,9 +35,14 @@ function About() {
               with tech communities and host events for students to improve
               their skills and improve myself as well in the process.
             </p>
-          </div>
+          </motion.div>
           <div className="flex justify-center space-x-4 p-4">
-            <div className="p-4 w-full max-w-xs">
+            <motion.div
+              className="p-4 w-full max-w-xs"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
               <div className="border-2 border-gray-200 px-4 py-6 rounded-lg text-center">
                 <FontAwesomeIcon
                   icon={faGraduationCap}
@@ -35,8 +53,13 @@ function About() {
                 </h2>
                 <p className="text-gray-400"> BS Computer Science <br></br> FAST NUCES Peshawar</p>
               </div>
-            </div>
-            <div className="p-4 w-full max-w-xs">
+            </motion.div>
+            <motion.div
+              className="p-4 w-full max-w-xs"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
               <div className="border-2 border-gray-200 px-4 py-6 rounded-lg text-center">
                 <FontAwesomeIcon
                   icon={faTrophy}
@@ -47,7 +70,7 @@ function About() {
                 </h2>
                 <p className="text-gray-400">2+ year Front-End <br></br> Web Development</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
